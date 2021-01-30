@@ -28,14 +28,18 @@ namespace GGJ.Gameplay
                 //REMOVE LATER
                 LighthouseState = states.active;
             }
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                lightPivot.SetActive(!lightPivot.activeSelf);
+            }
 
             if (LighthouseState == states.active)
             {
-                if (Input.GetKey(KeyCode.Q))
+                if (lightPivot.activeSelf && Input.GetKey(KeyCode.Q))
                 {
                     lightPivot.transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
                 }
-                else if (Input.GetKey(KeyCode.E))
+                else if (lightPivot.activeSelf && Input.GetKey(KeyCode.E))
                 {
                     lightPivot.transform.Rotate(-Vector3.up * Time.deltaTime * rotationSpeed);
                 }
@@ -45,6 +49,7 @@ namespace GGJ.Gameplay
         void Start()
         {
             LighthouseState = states.active;
+            lightPivot.SetActive(false);
         }
     }
 }
