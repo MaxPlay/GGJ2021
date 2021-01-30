@@ -10,8 +10,10 @@ namespace GGJ.Gameplay
 
         public bool HasChest { get; private set; }
         [SerializeField] float speed;
+        [SerializeField] float rotationSpeed = 1.2f;
 
         List<Transform> InfuencingLightBeams = new List<Transform>();
+
 
         private void OnTriggerEnter(Collider other)
         {
@@ -39,10 +41,7 @@ namespace GGJ.Gameplay
         {
             if (other.CompareTag("Lightbeam"))
             {
-                if (InfuencingLightBeams.Contains(other.transform.parent))
-                {
-                    InfuencingLightBeams.Remove(other.transform.parent);
-                }
+                InfuencingLightBeams.Remove(other.transform.parent);
             }
         }
 
@@ -53,11 +52,31 @@ namespace GGJ.Gameplay
             gameObject.SetActive(false);
         }
 
+        Vector3 CalculateDirection()
+        {
+            Vector3 center = Vector3.zero;
+            float cnt = 0;
+            foreach (Transform trans in InfuencingLightBeams)
+            {
+                center += trans.position;
+                cnt++;
+            }
+            center /= cnt;
+
+            return new Vector3(center.x, transform.position.y, center.z);
+        }
+
         void Update()
         {
             //ADD WIND LATER
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            if (InfuencingLightBeams.Count > 0) { Debug.Log("I see a light!"); }
+
+            if (InfuencingLightBeams.Count > 0)
+            {
+                Vector3 targetDirection = CalculateDirection() - transform.position;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * rotationSpeed, 0.0f);
+                transform.rotation = Quaternion.LookRotation(newDirection);
+            }
         }
     }
 }
