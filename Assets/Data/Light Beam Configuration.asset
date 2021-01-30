@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Light Beam Configuration
   m_EditorClassIdentifier: 
   StartWidth: 1
-  EndWidth: 2
+  EndWidth: 4
   Distance: 1
-  Length: 10
+  Length: 20
