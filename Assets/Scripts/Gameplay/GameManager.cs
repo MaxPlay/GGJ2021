@@ -1,4 +1,5 @@
 ﻿using GGJ.Levels;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,10 @@ namespace GGJ.Gameplay
 
         [SerializeField]
         private LevelData levelData;
+
+        [SerializeField]
+        private ShipSpawnConfiguration shipConfiguration;
+
 
         public UnityEvent<WinningState> OnGameOver;
 
@@ -30,20 +35,26 @@ namespace GGJ.Gameplay
             Instance = this;
         }
 
+        private void Start()
+        {
+            SpawnShip();
+        }
+
         public void SpawnShip()
         {
             Debug.Assert(levelData, "No level data assigned");
             if (SpawnedShips >= levelData.ShipCount)
                 return;
 
-            // TODO: We need some useful spawning logic here
+            Ship ship = Instantiate(shipConfiguration.ShipPrefab, Vector3.Lerp(shipConfiguration.StartSpawnLine, shipConfiguration.EndSpawnLine, UnityEngine.Random.value), Quaternion.LookRotation(shipConfiguration.MoveDirection));
+            ship.DoSpawnAnimation();
+            ++SpawnedShips;
         }
 
         public void ShipReachedHarbor(Ship ship)
         {
-            ReachedShips++;
-            if (ship.HasChest)
-                ReachedChests++;
+            ReachedShips += ship.CollectedChests + 1;
+            ReachedChests += ship.CollectedChests;
 
             CheckWinningConditions();
         }
@@ -61,10 +72,25 @@ namespace GGJ.Gameplay
             Debug.Log($"Game Over: {winningState}");
         }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(shipConfiguration.StartSpawnLine, shipConfiguration.EndSpawnLine);
+        }
+
         public enum WinningState
         {
             Lost,
             Won
+        }
+
+        [Serializable]
+        private class ShipSpawnConfiguration
+        {
+            public Ship ShipPrefab;
+            public Vector3 MoveDirection;
+            public Vector3 StartSpawnLine;
+            public Vector3 EndSpawnLine;
         }
     }
 }
