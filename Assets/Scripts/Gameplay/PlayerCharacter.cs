@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField]
-    GameObject visuals;
+    SpriteRenderer visuals;
 
     [SerializeField]
     Transform[] paths;
@@ -27,6 +27,11 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     UnityEvent leaveBorder = new UnityEvent();
 
+    [SerializeField]
+    Animator animator;
+
+    private float prevPosition;
+    private bool isMoving;
 
     public float CurrentPosition
     {
@@ -47,6 +52,7 @@ public class PlayerCharacter : MonoBehaviour
     void Start()
     {
         currentPosition = 0.5f;
+        prevPosition = CurrentPosition;
         transform.position = GetCurrentPosition();
     }
 
@@ -57,6 +63,23 @@ public class PlayerCharacter : MonoBehaviour
             MoveRight();
         if (Input.GetKey(KeyCode.A))
             MoveLeft();
+        UpdateMoveChecker();
+    }
+
+    private void UpdateMoveChecker()
+    {
+        if(prevPosition != CurrentPosition && !isMoving)
+        {
+            isMoving = true;
+            animator.SetBool("IsWalking", true);
+            visuals.flipX = CurrentPosition < prevPosition;
+        }
+        else if(isMoving && prevPosition == CurrentPosition)
+        {
+            isMoving = false;
+            animator.SetBool("IsWalking", false);
+        }
+        prevPosition = CurrentPosition;
     }
 
     public void SetPosition(float position)
@@ -80,17 +103,17 @@ public class PlayerCharacter : MonoBehaviour
         if (CurrentPosition == 0)
         {
             hitLeftBorder.Invoke();
-            visuals.SetActive(false);
+            visuals.gameObject.SetActive(false);
         }
         else if (CurrentPosition == 1)
         {
             hitRightBorder.Invoke();
-            visuals.SetActive(false);
+            visuals.gameObject.SetActive(false);
         }
-        else if (!visuals.activeSelf)
+        else if (!visuals.gameObject.activeSelf)
         {
             leaveBorder.Invoke();
-            visuals.SetActive(true);
+            visuals.gameObject.SetActive(true);
         }
     }
 
