@@ -112,7 +112,7 @@ namespace GGJ.Gameplay
                 Vector3 windDirection = Vector3.forward + new Vector3(wind.x, 0f, wind.y);
                 direction = (Vector3.forward + windDirection) / 2f;
             }
-            if (CollectedChests > 0) { direction *= chestSpeedReduction; }
+            if (CollectedChests > 0) { direction *= (1f - chestSpeedReduction); }
 
             transform.Translate(direction * Time.deltaTime * speed);
 
