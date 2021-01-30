@@ -24,6 +24,9 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     UnityEvent hitLeftBorder = new UnityEvent();
 
+    [SerializeField]
+    UnityEvent leaveBorder = new UnityEvent();
+
 
     public float CurrentPosition
     {
@@ -86,6 +89,7 @@ public class PlayerCharacter : MonoBehaviour
         }
         else if(!visuals.activeSelf)
         {
+            leaveBorder.Invoke();
             visuals.SetActive(true);
         }
     }
