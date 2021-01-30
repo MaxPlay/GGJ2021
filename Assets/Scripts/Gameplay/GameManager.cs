@@ -23,6 +23,7 @@ namespace GGJ.Gameplay
         public int ReachedShips { get; set; }
 
         public int ReachedChests { get; set; }
+        [SerializeField] public WindManager windManager;
 
         private void Awake()
         {
