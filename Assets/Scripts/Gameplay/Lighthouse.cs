@@ -49,12 +49,12 @@ namespace GGJ.Gameplay
                 }
             }
         }
-        //REMOVE LATER
-        void Start()
+
+        void OnEnable()
         {
             LighthouseState = states.active;
-            lightPivot.SetActive(false);
-            onLightTurnedOff.Invoke();
+            lightPivot.SetActive(true);
+            onLightTurnedOn.Invoke();
         }
     }
 }

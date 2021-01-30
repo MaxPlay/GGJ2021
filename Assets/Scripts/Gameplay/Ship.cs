@@ -95,11 +95,18 @@ namespace GGJ.Gameplay
 
         void Update()
         {
-            if (state == State.Spawn)
-                return;
+            if (state == State.Spawn) { return; }
 
-            //ADD WIND LATER
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            WindManager windManager = GameManager.Instance.WindManager;
+            Vector3 direction = Vector3.forward;
+            if (windManager != null)
+            {
+                Vector2 wind = windManager.GetWindSpeed();
+                Vector3 windDirection = Vector3.forward + new Vector3(wind.x, 0f, wind.y);
+                direction = (Vector3.forward + windDirection) / 2f;
+                transform.Translate(direction * Time.deltaTime * speed);
+            }
+            transform.Translate(direction * Time.deltaTime * speed);
 
             if (InfuencingLightBeams.Count > 0)
             {

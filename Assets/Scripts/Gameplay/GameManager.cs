@@ -20,6 +20,9 @@ namespace GGJ.Gameplay
         [SerializeField]
         private ChestSpawnConfiguration chestConfiguration;
 
+        [SerializeField]
+        private WindManager windManager;
+
         public enum WinningState
         {
             Lost,
@@ -30,6 +33,8 @@ namespace GGJ.Gameplay
         public int ReachedChests { get; set; }
         public int ReachedShips { get; set; }
         public int SpawnedShips { get; private set; }
+
+        public WindManager WindManager => windManager;
 
         public void ShipReachedHarbor(Ship ship)
         {
