@@ -42,6 +42,7 @@ namespace GGJ.Gameplay
                 if (windDirection.x != 0f)
                 {
                     Cloud cloudBehaviour = cloud.AddComponent<Cloud>();
+                    cloudBehaviour.SetCloudArea(new Rect(cloudSpawnVector.x, cloudSpawnVector.y, cloudLayerSize.x, cloudLayerSize.y));
                     if (windDirection.x > 0f)
                     {
                         cloudBehaviour.SetCloudSpeed(-Random.Range(minWindStrength, maxWindStrength));
