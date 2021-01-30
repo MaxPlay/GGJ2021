@@ -19,7 +19,13 @@ namespace GGJ.Gameplay
         public bool CanBeControlledByLighthouse => state != State.Sailing;
 
         public int CollectedChests { get; private set; }
-        [Range(0f, 1f)] [SerializeField] private float chestSpeedReduction;
+
+        [Range(0f, 1f)]
+        [SerializeField]
+        private float chestSpeedReduction;
+
+        [SerializeField]
+        private AnimationCurve spawnAnimation;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -61,13 +67,13 @@ namespace GGJ.Gameplay
         Vector3 CalculateDirection()
         {
             Vector3 center = Vector3.zero;
-            float cnt = 0;
-            foreach (Transform trans in InfuencingLightBeams)
+            float count = 0;
+            for (int i = 0; i < InfuencingLightBeams.Count; i++)
             {
-                center += trans.position;
-                cnt++;
+                center += InfuencingLightBeams[i].position;
+                count++;
             }
-            center /= cnt;
+            center /= count;
 
             return new Vector3(center.x, transform.position.y, center.z);
         }
@@ -79,7 +85,7 @@ namespace GGJ.Gameplay
 
         public IEnumerator SpawnAnimationRoutine()
         {
-            Vector3 startPosition = transform.position - transform.forward * 1 - transform.up * 4;
+            Vector3 startPosition = transform.position - transform.forward * 2 - transform.up * 3;
             Vector3 endPosition = transform.position;
             const float totalTime = 2f;
             float time = totalTime;
@@ -87,7 +93,7 @@ namespace GGJ.Gameplay
             while (time > 0)
             {
                 time -= Time.deltaTime;
-                transform.position = Vector3.Lerp(endPosition, startPosition, time / totalTime);
+                transform.position = Vector3.Lerp(startPosition, endPosition, spawnAnimation.Evaluate(1 - time / totalTime));
                 yield return null;
             }
             transform.position = endPosition;
