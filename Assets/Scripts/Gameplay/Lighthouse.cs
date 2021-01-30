@@ -42,11 +42,11 @@ namespace GGJ.Gameplay
 
             if (LighthouseState == states.active)
             {
-                if (lightPivot.activeSelf && Input.GetKey(KeyCode.Q))
+                if (lightPivot.activeSelf && Input.GetKey(KeyCode.E))
                 {
                     lightPivot.transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
                 }
-                else if (lightPivot.activeSelf && Input.GetKey(KeyCode.E))
+                else if (lightPivot.activeSelf && Input.GetKey(KeyCode.Q))
                 {
                     lightPivot.transform.Rotate(-Vector3.up * Time.deltaTime * rotationSpeed);
                 }
