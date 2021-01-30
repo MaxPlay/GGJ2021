@@ -10,6 +10,7 @@ namespace GGJ.UI
         public static UIMainMenu Instance;
         [SerializeField] GameObject panelLogin;
         [SerializeField] private LevelRegistry levelRegistry;
+        [SerializeField] Animator uiAnimator;
 
         public override void SetActive(bool setActive)
         {
@@ -46,9 +47,19 @@ namespace GGJ.UI
 #endif
         }
 
+        public void BackToMainMenuButton()
+        {
+            uiAnimator.SetBool("IsLevelSelect", false);
+        }
+
         public void ButtonShowLevelSelect()
         {
-            Debug.LogError("Should show the level select, but this method is not yet implemented");
+            uiAnimator.SetBool("IsLevelSelect", true);
+        }
+
+        public void StartLevel(int level)
+        {
+            levelRegistry.StartLevel(level);
         }
     }
 }
