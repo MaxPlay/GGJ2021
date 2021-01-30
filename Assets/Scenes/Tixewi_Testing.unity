@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudAmount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: maxWindStrength
       value: 0.8
       objectReference: {fileID: 0}
@@ -142,6 +146,42 @@ PrefabInstance:
       propertyPath: windDirection.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudLayerSize.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudLayerSize.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudLayerSize.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudSpawnVector.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudSpawnVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudSpawnVector.z
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4657952748121019544, guid: be31339e213e1d140bef3599863dd1ec, type: 3}
+    - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
+      propertyPath: cloudPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4966070830448993056, guid: 4b55fe1f3f6613944a2dc25a227ac95e, type: 3}
     - target: {fileID: 5363821766482903078, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: m_Name
       value: CoreGameObject
