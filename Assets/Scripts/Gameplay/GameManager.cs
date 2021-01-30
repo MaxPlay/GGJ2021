@@ -1,5 +1,6 @@
 ﻿using GGJ.Levels;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,7 +15,6 @@ namespace GGJ.Gameplay
 
         [SerializeField]
         private ShipSpawnConfiguration shipConfiguration;
-
 
         public UnityEvent<WinningState> OnGameOver;
 
@@ -37,18 +37,25 @@ namespace GGJ.Gameplay
 
         private void Start()
         {
-            SpawnShip();
+            StartCoroutine(ShipSpawnRoutine());
         }
 
-        public void SpawnShip()
+        public bool SpawnShip()
         {
             Debug.Assert(levelData, "No level data assigned");
             if (SpawnedShips >= levelData.ShipCount)
-                return;
+                return false;
 
-            Ship ship = Instantiate(shipConfiguration.ShipPrefab, Vector3.Lerp(shipConfiguration.StartSpawnLine, shipConfiguration.EndSpawnLine, UnityEngine.Random.value), Quaternion.LookRotation(shipConfiguration.MoveDirection));
+            Ship ship = Instantiate(shipConfiguration.ShipPrefab, shipConfiguration.GetSpawnLocation(), Quaternion.LookRotation(shipConfiguration.MoveDirection));
             ship.DoSpawnAnimation();
             ++SpawnedShips;
+            return true;
+        }
+
+        private IEnumerator ShipSpawnRoutine()
+        {
+            while (SpawnShip())
+                yield return new WaitForSeconds(shipConfiguration.GetSpawnTime());
         }
 
         public void ShipReachedHarbor(Ship ship)
@@ -91,6 +98,11 @@ namespace GGJ.Gameplay
             public Vector3 MoveDirection;
             public Vector3 StartSpawnLine;
             public Vector3 EndSpawnLine;
+            public float MinSpawnTime;
+            public float MaxSpawnTime;
+
+            public float GetSpawnTime() => UnityEngine.Random.Range(MinSpawnTime, MaxSpawnTime);
+            public Vector3 GetSpawnLocation() => Vector3.Lerp(StartSpawnLine, EndSpawnLine, UnityEngine.Random.value);
         }
     }
 }
