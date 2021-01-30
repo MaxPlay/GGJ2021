@@ -20279,6 +20279,7 @@ MonoBehaviour:
   lightPlane: {fileID: 0}
   lightPivot: {fileID: 4875888618766992746}
   rotationSpeed: 60
+  switchAnimator: {fileID: 0}
   onLightTurnedOn:
     m_PersistentCalls:
       m_Calls:
@@ -20530,6 +20531,7 @@ MonoBehaviour:
   lightPlane: {fileID: 0}
   lightPivot: {fileID: 6241777594418798178}
   rotationSpeed: 60
+  switchAnimator: {fileID: 0}
   onLightTurnedOn:
     m_PersistentCalls:
       m_Calls:

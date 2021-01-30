@@ -13,6 +13,7 @@ namespace GGJ.Gameplay
         [SerializeField] GameObject lightPlane;
         [SerializeField] GameObject lightPivot;
         [SerializeField] float rotationSpeed = 60f;
+        [SerializeField] Animator switchAnimator;
         [SerializeField] UnityEvent onLightTurnedOn = new UnityEvent();
         [SerializeField] UnityEvent onLightTurnedOff = new UnityEvent();
         void Update()
@@ -28,11 +29,13 @@ namespace GGJ.Gameplay
                 if (lightPivot.activeSelf)
                 {
                     LighthouseState = states.active;
+                    switchAnimator.SetBool("Active", true);
                     onLightTurnedOn.Invoke();
                 }
                 if (!lightPivot.activeSelf)
                 {
                     LighthouseState = states.disabled;
+                    switchAnimator.SetBool("Active", false);
                     onLightTurnedOff.Invoke();
                 }
             }
@@ -54,6 +57,7 @@ namespace GGJ.Gameplay
         {
             LighthouseState = states.active;
             lightPivot.SetActive(true);
+            switchAnimator.SetBool("Active", true);
             onLightTurnedOn.Invoke();
         }
     }
