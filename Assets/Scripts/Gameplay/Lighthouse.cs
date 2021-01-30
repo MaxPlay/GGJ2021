@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace GGJ.Gameplay
 {
@@ -12,6 +13,8 @@ namespace GGJ.Gameplay
         [SerializeField] GameObject lightPlane;
         [SerializeField] GameObject lightPivot;
         [SerializeField] float rotationSpeed = 60f;
+        [SerializeField] UnityEvent onLightTurnedOn = new UnityEvent();
+        [SerializeField] UnityEvent onLightTurnedOff = new UnityEvent();
         void Update()
         {
             HandleInputs();
@@ -31,6 +34,10 @@ namespace GGJ.Gameplay
             if(Input.GetKeyDown(KeyCode.F))
             {
                 lightPivot.SetActive(!lightPivot.activeSelf);
+                if (lightPivot.activeSelf)
+                    onLightTurnedOn.Invoke();
+                if (!lightPivot.activeSelf)
+                    onLightTurnedOff.Invoke();
             }
 
             if (LighthouseState == states.active)
@@ -50,6 +57,7 @@ namespace GGJ.Gameplay
         {
             LighthouseState = states.active;
             lightPivot.SetActive(false);
+            onLightTurnedOff.Invoke();
         }
     }
 }
