@@ -11,10 +11,13 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     GameObject pauseUiWindow;
 
+    public static bool pauseEnabled = true;
+
     const string mainMenuSceneName = "MainMenu";
 
     private void Awake()
     {
+        pauseEnabled = true;
         isPaused = false;
         Time.timeScale = isPaused ? 0 : 1;
         pauseUiWindow.SetActive(isPaused);
@@ -23,7 +26,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(pauseEnabled && Input.GetKeyDown(KeyCode.Escape))
         {
             SwitchPause();
         }
