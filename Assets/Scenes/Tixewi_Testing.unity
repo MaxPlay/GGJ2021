@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: maxWindStrength
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: minWindStrength
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: windDirection.x
@@ -148,27 +148,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: cloudLayerSize.x
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: cloudLayerSize.y
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: cloudLayerSize.z
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: cloudSpawnVector.x
-      value: -20
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: cloudSpawnVector.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: cloudSpawnVector.z
-      value: 26
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2084921285475287369, guid: 371e374b7412849458989fc026c7e622, type: 3}
       propertyPath: cloudPrefabs.Array.size
