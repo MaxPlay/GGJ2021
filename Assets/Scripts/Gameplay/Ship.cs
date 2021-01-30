@@ -19,6 +19,7 @@ namespace GGJ.Gameplay
         public bool CanBeControlledByLighthouse => state != State.Sailing;
 
         public int CollectedChests { get; private set; }
+        [Range(0f, 1f)] [SerializeField] private float chestSpeedReduction;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -104,8 +105,9 @@ namespace GGJ.Gameplay
                 Vector2 wind = windManager.GetWindSpeed();
                 Vector3 windDirection = Vector3.forward + new Vector3(wind.x, 0f, wind.y);
                 direction = (Vector3.forward + windDirection) / 2f;
-                transform.Translate(direction * Time.deltaTime * speed);
             }
+            if (CollectedChests > 0) { direction *= chestSpeedReduction; }
+
             transform.Translate(direction * Time.deltaTime * speed);
 
             if (InfuencingLightBeams.Count > 0)
