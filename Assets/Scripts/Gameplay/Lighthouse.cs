@@ -7,7 +7,7 @@ namespace GGJ.Gameplay
 {
     public class Lighthouse : MonoBehaviour
     {
-        public enum states { active, passive, diabled }
+        public enum states { active, passive, disabled }
         states LighthouseState;
         [SerializeField] Light directionalLight;
         [SerializeField] GameObject lightPlane;
@@ -22,22 +22,19 @@ namespace GGJ.Gameplay
 
         void HandleInputs()
         {
-            if (LighthouseState == states.active && Input.GetKeyDown(KeyCode.F))
-            {
-                LighthouseState = states.passive;
-            }
-            else if (LighthouseState != states.active && Input.GetKeyDown(KeyCode.F))
-            {
-                //REMOVE LATER
-                LighthouseState = states.active;
-            }
-            if(Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 lightPivot.SetActive(!lightPivot.activeSelf);
                 if (lightPivot.activeSelf)
+                {
+                    LighthouseState = states.active;
                     onLightTurnedOn.Invoke();
+                }
                 if (!lightPivot.activeSelf)
+                {
+                    LighthouseState = states.disabled;
                     onLightTurnedOff.Invoke();
+                }
             }
 
             if (LighthouseState == states.active)

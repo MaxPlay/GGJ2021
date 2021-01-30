@@ -12,7 +12,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     Transform[] paths;
 
-    [SerializeField,Range(0, 1)]
+    [SerializeField, Range(0, 1)]
     private float currentPosition;
 
     [SerializeField]
@@ -87,7 +87,7 @@ public class PlayerCharacter : MonoBehaviour
             hitRightBorder.Invoke();
             visuals.SetActive(false);
         }
-        else if(!visuals.activeSelf)
+        else if (!visuals.activeSelf)
         {
             leaveBorder.Invoke();
             visuals.SetActive(true);
@@ -100,10 +100,10 @@ public class PlayerCharacter : MonoBehaviour
             return Vector3.zero;
         if (currentPosition == 1)
             return paths[paths.Length - 1].position;
-        float lineCount = paths.Length - 1-0f;
+        float lineCount = paths.Length - 1 - 0f;
         int lineIndex = (int)(currentPosition * lineCount);
         float positionOnLine = (currentPosition % (1.0f / lineCount)) * lineCount;
-        return paths[lineIndex].position + MathUtils.Vector3Lerp((paths[lineIndex + 1].position - paths[lineIndex].position),Vector3.zero, 1 - positionOnLine);
+        return paths[lineIndex].position + Vector3.LerpUnclamped(paths[lineIndex + 1].position - paths[lineIndex].position, Vector3.zero, 1 - positionOnLine);
     }
 
     private void OnDrawGizmos()
