@@ -1604,10 +1604,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelData: {fileID: 11400000, guid: d7e5557351f4f73438417b748d078a46, type: 2}
   shipConfiguration:
-    ShipPrefab: {fileID: 0}
-    MoveDirection: {x: 0, y: 0, z: 1}
-    StartSpawnLine: {x: -15, y: 0, z: 23}
-    EndSpawnLine: {x: 15, y: 0, z: 23}
+    ShipPrefab: {fileID: 7456614691501960252, guid: d37f93c0daf06e447904ae30ca436899, type: 3}
+    MoveDirection: {x: 0, y: 0, z: -1}
+    StartSpawnLine: {x: -15, y: 0, z: 24}
+    EndSpawnLine: {x: 15, y: 0, z: 24}
   OnGameOver:
     m_PersistentCalls:
       m_Calls: []
