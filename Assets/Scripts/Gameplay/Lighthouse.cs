@@ -1,44 +1,50 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class Lighthouse : MonoBehaviour
+namespace GGJ.Gameplay
 {
-    public class Ship : MonoBehaviour
+    public class Lighthouse : MonoBehaviour
     {
-        bool IsActive;
+        public enum states { active, passive, diabled }
+        states LighthouseState;
         [SerializeField] Light directionalLight;
         [SerializeField] GameObject lightPlane;
         [SerializeField] GameObject lightPivot;
+        [SerializeField] float rotationSpeed = 60f;
         void Update()
         {
             HandleInputs();
-            if (IsActive) { AlignLight(); }
         }
 
         void HandleInputs()
         {
-            if (IsActive && Input.GetKeyDown(KeyCode.F))
+            if (LighthouseState == states.active && Input.GetKeyDown(KeyCode.F))
             {
-                IsActive = false;
-            }else if (!IsActive && Input.GetKeyDown(KeyCode.F))
+                LighthouseState = states.passive;
+            }
+            else if (LighthouseState != states.active && Input.GetKeyDown(KeyCode.F))
             {
                 //REMOVE LATER
-                IsActive = true;
+                LighthouseState = states.active;
+            }
+
+            if (LighthouseState == states.active)
+            {
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    lightPivot.transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
+                }
+                else if (Input.GetKey(KeyCode.E))
+                {
+                    lightPivot.transform.Rotate(-Vector3.up * Time.deltaTime * rotationSpeed);
+                }
             }
         }
-
-        void AlignLight()
-        {
-            Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            lightPivot.transform.rotation = Quaternion.AngleAxis (-angle, Vector3.up);
-        }
-
         //REMOVE LATER
         void Start()
         {
-            IsActive = true;
+            LighthouseState = states.active;
         }
     }
 }
