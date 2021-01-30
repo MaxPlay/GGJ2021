@@ -16,5 +16,6 @@ MonoBehaviour:
   previewSprite: {fileID: 0}
   sceneName: Test_Level
   shipCount: 10
+  chestCount: 20
   requiredChestCount: 0
   requiredShipCount: 8

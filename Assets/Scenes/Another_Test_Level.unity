@@ -586,6 +586,12 @@ MonoBehaviour:
   lightPlane: {fileID: 1385290559}
   lightPivot: {fileID: 1481451284}
   rotationSpeed: 60
+  onLightTurnedOn:
+    m_PersistentCalls:
+      m_Calls: []
+  onLightTurnedOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &150110812
 Transform:
   m_ObjectHideFlags: 0
@@ -864,6 +870,12 @@ MonoBehaviour:
   lightPlane: {fileID: 1394762899}
   lightPivot: {fileID: 1816907706}
   rotationSpeed: 60
+  onLightTurnedOn:
+    m_PersistentCalls:
+      m_Calls: []
+  onLightTurnedOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &835546672
 Transform:
   m_ObjectHideFlags: 0
@@ -1814,17 +1826,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaedf54e110b6d4ba05071d723a70f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 11400000, guid: d7e5557351f4f73438417b748d078a46, type: 2}
-  shipConfiguration:
-    ShipPrefab: {fileID: 7456614691501960252, guid: d37f93c0daf06e447904ae30ca436899, type: 3}
-    MoveDirection: {x: 0, y: 0, z: -1}
-    StartSpawnLine: {x: -10.25, y: 1.01, z: 14}
-    EndSpawnLine: {x: 8.87, y: 1.01, z: 14}
-    MinSpawnTime: 5
-    MaxSpawnTime: 10
   OnGameOver:
     m_PersistentCalls:
       m_Calls: []
+  levelData: {fileID: 11400000, guid: d7e5557351f4f73438417b748d078a46, type: 2}
+  shipConfiguration:
+    EndSpawnLine: {x: 8.87, y: 1.01, z: 14}
+    MaxSpawnTime: 10
+    MinSpawnTime: 5
+    MoveDirection: {x: 0, y: 0, z: -1}
+    ShipPrefab: {fileID: 7456614691501960252, guid: d37f93c0daf06e447904ae30ca436899, type: 3}
+    StartSpawnLine: {x: -10.25, y: 1.01, z: 14}
+  chestConfiguration:
+    ChestPrefab: {fileID: 3689817070981845585, guid: c817c15040fc84d45bcf08f12a50e3cd, type: 3}
+    SpawnArea:
+      serializedVersion: 2
+      x: -5
+      y: -7
+      width: 10
+      height: 12
+    MinDistanceFromObstacles: 2
 --- !u!4 &1935862592
 Transform:
   m_ObjectHideFlags: 0

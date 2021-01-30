@@ -39,6 +39,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5363821766482903079}
     m_Modifications:
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: chestConfiguration.ChestPrefab
+      value: 
+      objectReference: {fileID: 3689817070981845585, guid: c817c15040fc84d45bcf08f12a50e3cd, type: 3}
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: chestConfiguration.SpawnArea.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: chestConfiguration.SpawnArea.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: chestConfiguration.SpawnArea.width
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: chestConfiguration.SpawnArea.height
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: chestConfiguration.MinDistanceFromObstacles
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6241777593791369278, guid: 03b70532e321db24a8000b14dc613591, type: 3}
       propertyPath: m_Name
       value: CoreGameplay

@@ -24,7 +24,7 @@ namespace GGJ.Gameplay
         {
             if (other.CompareTag("Chest"))
             {
-                Chest chest = other.GetComponent<Chest>();
+                Chest chest = other.GetComponentInParent<Chest>();
                 Debug.Assert(chest != null, $@"GameObject with Tag ""Chest"" has no component of type ""{nameof(Chest)}""");
                 chest.Collected();
                 ++CollectedChests;
