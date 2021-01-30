@@ -21,6 +21,9 @@ namespace GGJ.Levels
         private int shipCount;
 
         [SerializeField]
+        private int chestCount;
+
+        [SerializeField]
         private int requiredChestCount;
 
         [SerializeField]
@@ -31,6 +34,7 @@ namespace GGJ.Levels
         public int RequiredChestCount => requiredChestCount;
         public int RequiredShipCount => requiredShipCount;
         public int ShipCount => shipCount;
+        public int ChestCount => chestCount;
 
         public void StartLevel()
         {
