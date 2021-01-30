@@ -205,9 +205,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1688565835}
-        m_TargetAssemblyTypeName: GGJ.UI.MainMenuBehaviour, Assembly-CSharp
-        m_MethodName: Quit
+      - m_Target: {fileID: 619524982}
+        m_TargetAssemblyTypeName: GGJ.UI.UIMainMenu, Assembly-CSharp
+        m_MethodName: ButtonQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -500,6 +500,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567202637}
   m_CullTransparentMesh: 0
+--- !u!1 &619524979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619524980}
+  - component: {fileID: 619524981}
+  - component: {fileID: 619524982}
+  m_Layer: 0
+  m_Name: _UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &619524980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619524979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.802004, y: 3.1539917, z: -4.501598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619524981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619524979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2395deb57cc880044b6b6e9285c6f05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &619524982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619524979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8a550984336da4091e3f473b45f346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelLogin: {fileID: 823603459}
+  levelRegistry: {fileID: 11400000, guid: 42eb0097b79a2904eaa23f26a0de43de, type: 2}
 --- !u!1 &665490741
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +918,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775367995}
   m_CullTransparentMesh: 0
+--- !u!1 &823603459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823603462}
+  - component: {fileID: 823603461}
+  m_Layer: 5
+  m_Name: PanelMainMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!222 &823603461
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823603459}
+  m_CullTransparentMesh: 0
+--- !u!224 &823603462
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823603459}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1688565834}
+  - {fileID: 914703060}
+  m_Father: {fileID: 1332901426}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &914703059
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,11 +989,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914703059}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1332901426}
+  m_Father: {fileID: 823603462}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1369,10 +1473,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1688565835}
-        m_TargetAssemblyTypeName: GGJ.UI.MainMenuBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 619524982}
+        m_TargetAssemblyTypeName: GGJ.UI.UIMainMenu, Assembly-CSharp
         m_MethodName: SetSoundVolume
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1471,8 +1575,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1688565834}
-  - {fileID: 914703060}
+  - {fileID: 823603462}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1742,7 +1845,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688565834}
-  - component: {fileID: 1688565835}
   m_Layer: 5
   m_Name: Menu Container
   m_TagString: Untagged
@@ -1757,7 +1859,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688565833}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1765,7 +1867,7 @@ RectTransform:
   - {fileID: 2075095323}
   - {fileID: 1009459564}
   - {fileID: 37692902}
-  m_Father: {fileID: 1332901426}
+  m_Father: {fileID: 823603462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66, y: 0}
@@ -1773,19 +1875,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &1688565835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688565833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2123df130da8e6049a1e6264d297af72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelRegistry: {fileID: 11400000, guid: 42eb0097b79a2904eaa23f26a0de43de, type: 2}
 --- !u!1 &1855122383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,9 +1957,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1688565835}
-        m_TargetAssemblyTypeName: GGJ.UI.MainMenuBehaviour, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 619524982}
+        m_TargetAssemblyTypeName: GGJ.UI.UIMainMenu, Assembly-CSharp
+        m_MethodName: ButtonShowLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2000,7 +2089,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1688565835}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GGJ.UI.MainMenuBehaviour, Assembly-CSharp
         m_MethodName: ShowLevelSelect
         m_Mode: 1
