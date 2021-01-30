@@ -49,6 +49,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private void Update()
     {
+        //TODO: Replace this with actual Input-System
         if (Input.GetKey(KeyCode.D))
             MoveRight();
         if (Input.GetKey(KeyCode.A))
