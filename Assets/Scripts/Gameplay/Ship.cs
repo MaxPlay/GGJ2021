@@ -29,7 +29,7 @@ namespace GGJ.Gameplay
                 chest.Collected();
                 ++CollectedChests;
             }
-            else if (other.CompareTag("Obstacle"))
+            else if (other.CompareTag("Obstacle") || other.CompareTag("Ship"))
             {
                 Destroy(gameObject);
             }
