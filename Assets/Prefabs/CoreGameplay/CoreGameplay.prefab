@@ -9919,6 +9919,7 @@ MonoBehaviour:
   OnGameOver:
     m_PersistentCalls:
       m_Calls: []
+  windManager: {fileID: 497552472}
 --- !u!114 &497552472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9934,6 +9935,10 @@ MonoBehaviour:
   windDirection: {x: 0, y: 0}
   minWindStrength: 0
   maxWindStrength: 0
+  cloudPrefabs: []
+  cloudSpawnVector: {x: 0, y: 0, z: 0}
+  cloudDistanceUntilDeath: 0
+  cloudAmount: 0
 --- !u!1 &6241777593284868683
 GameObject:
   m_ObjectHideFlags: 0
