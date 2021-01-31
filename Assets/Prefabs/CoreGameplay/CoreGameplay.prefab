@@ -10689,9 +10689,18 @@ MonoBehaviour:
       width: 10
       height: 12
     MinDistanceFromObstacles: 2
+  hostileConfiguration:
+    WhalePrefab: {fileID: 0}
+    SpawnArea:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
   scoreText: {fileID: 8594804271378182542}
   chestText: {fileID: 230900824688654384}
   windManager: {fileID: 497552472}
+  tutorialObject: {fileID: 0}
   onGameOver:
     m_PersistentCalls:
       m_Calls: []

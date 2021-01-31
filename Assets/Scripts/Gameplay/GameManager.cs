@@ -27,6 +27,9 @@ namespace GGJ.Gameplay
         [SerializeField]
         private WindManager windManager;
 
+        [SerializeField]
+        GameObject tutorialObject;
+
         public enum WinningState
         {
             Lost,
@@ -204,6 +207,7 @@ namespace GGJ.Gameplay
         {
             SpawnChests();
             StartCoroutine(ShipSpawnRoutine());
+            tutorialObject.SetActive(levelData.UsesTutorial);
             if (scoreText && chestText)
                 UpdateTexts();
         }
