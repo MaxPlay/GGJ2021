@@ -1,4 +1,5 @@
-﻿using GGJ.Levels;
+﻿using GGJ.Gameplay;
+using GGJ.Levels;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,9 @@ public class EndScreenUI : MonoBehaviour
     GameObject uiObject;
 
     [SerializeField]
+    GameManager gameManager;
+
+    [SerializeField]
     LevelRegistry levels;
 
     const string victoryText = "VICTORY";
@@ -26,7 +30,12 @@ public class EndScreenUI : MonoBehaviour
         uiObject.SetActive(false);
     }
 
-    public void OpenEndScreen(bool isVictory)
+    private void Start()
+    {
+        gameManager.OnGameOver.AddListener(OpenEndScreen);
+    }
+
+    private void OpenEndScreen(bool isVictory)
     {
         titleText.text = isVictory ? victoryText : FailureText;
         uiObject.SetActive(true);

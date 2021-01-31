@@ -9,8 +9,6 @@ namespace GGJ.Gameplay
 {
     public class GameManager : MonoBehaviour
     {
-        public UnityEvent<WinningState> OnGameOver;
-
         [SerializeField]
         private LevelData levelData;
 
@@ -31,17 +29,32 @@ namespace GGJ.Gameplay
 
         public static GameManager Instance { get; private set; }
         public int ReachedChests { get; set; }
+        public int Points { get; set; }
         public int ReachedShips { get; set; }
+        public int CrashedShips { get; set; }
         public int SpawnedShips { get; private set; }
+
+        [SerializeField]
+        private UnityEvent<bool> onGameOver = new UnityEvent<bool>();
+        public UnityEvent<bool> OnGameOver { get => onGameOver; }
 
         public WindManager WindManager => windManager;
 
         public void ShipReachedHarbor(Ship ship)
         {
-            ReachedShips += ship.CollectedChests + 1;
+            ReachedShips++;
+            Points += ship.CollectedChests + 1;
             ReachedChests += ship.CollectedChests;
 
-            CheckWinningConditions();
+            CheckEndgameCondition();
+        }
+
+        public void ShipCrashed(Ship ship)
+        {
+            CrashedShips += ship.CollectedChests + 1;
+            CrashedShips += ship.CollectedChests;
+
+            CheckEndgameCondition();
         }
 
         public bool SpawnShip()
@@ -51,6 +64,7 @@ namespace GGJ.Gameplay
                 return false;
 
             Ship ship = Instantiate(shipConfiguration.ShipPrefab, shipConfiguration.GetSpawnLocation(), Quaternion.LookRotation(shipConfiguration.MoveDirection));
+            ship.OnCrash.AddListener(ShipCrashed);
             ship.DoSpawnAnimation();
             ++SpawnedShips;
             return true;
@@ -67,22 +81,40 @@ namespace GGJ.Gameplay
             Instance = this;
         }
 
+        private void CheckEndgameCondition()
+        {
+            if(!levelData)
+            {
+                Debug.LogError("No level data assigned");
+                return;
+            }
+            if(levelData.ShipCount == ReachedShips + CrashedShips)
+            {
+                CheckWinningConditions();
+                CheckLosingConditions();
+            }
+        }
+
         private void CheckWinningConditions()
         {
             Debug.Assert(levelData, "No level data assigned");
 
-            if (ReachedShips == levelData.RequiredShipCount && ReachedChests == levelData.RequiredChestCount)
+            if (ReachedChests >= levelData.RequiredChestCount && Points >= levelData.RequiredShipCount)
                 GameOver(WinningState.Won);
         }
 
         private void CheckLosingConditions()
         {
+            Debug.Assert(levelData, "No level data assigned");
 
+            if (ReachedChests < levelData.RequiredChestCount || Points < levelData.RequiredShipCount)
+                GameOver(WinningState.Lost);
         }
 
         private void GameOver(WinningState winningState)
         {
             Debug.Log($"Game Over: {winningState}");
+            onGameOver.Invoke(winningState == WinningState.Won);
         }
 
         private void OnDrawGizmos()

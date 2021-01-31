@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace GGJ.Gameplay
 {
@@ -27,6 +28,12 @@ namespace GGJ.Gameplay
         [SerializeField]
         private AnimationCurve spawnAnimation;
 
+        private UnityEvent<Ship> onCrash = new UnityEvent<Ship>();
+        public UnityEvent<Ship> OnCrash
+        {
+            get { return onCrash; }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Chest"))
@@ -38,6 +45,7 @@ namespace GGJ.Gameplay
             }
             else if (other.CompareTag("Obstacle") || other.CompareTag("Ship"))
             {
+                onCrash.Invoke(this);
                 Destroy(gameObject);
             }
             else if (other.CompareTag("Lightbeam"))
