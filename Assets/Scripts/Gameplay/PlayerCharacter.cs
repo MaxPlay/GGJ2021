@@ -28,6 +28,9 @@ public class PlayerCharacter : MonoBehaviour
     UnityEvent leaveBorder = new UnityEvent();
 
     [SerializeField]
+    private Transform tutorialObject;
+
+    [SerializeField]
     Animator animator;
 
     private float prevPosition;
@@ -56,12 +59,14 @@ public class PlayerCharacter : MonoBehaviour
         prevPosition = CurrentPosition;
         inputBlocked = false;
         transform.position = GetCurrentPosition();
+        Debug.Assert(tutorialObject != null, "Player has no tutorial object");
+        tutorialObject.position = transform.position;
     }
 
     private void Update()
     {
         //TODO: Replace this with actual Input-System
-        if(!inputBlocked)
+        if (!inputBlocked)
         {
             if (Input.GetKey(KeyCode.D))
                 MoveRight();
@@ -73,18 +78,28 @@ public class PlayerCharacter : MonoBehaviour
 
     private void UpdateMoveChecker()
     {
-        if(prevPosition != CurrentPosition && !isMoving)
+        bool wasMoving = isMoving;
+        if (prevPosition != CurrentPosition && !isMoving)
         {
             isMoving = true;
             animator.SetBool("IsWalking", true);
             visuals.flipX = CurrentPosition < prevPosition;
         }
-        else if(isMoving && prevPosition == CurrentPosition)
+        else if (isMoving && prevPosition == CurrentPosition)
         {
             isMoving = false;
             animator.SetBool("IsWalking", false);
         }
         prevPosition = CurrentPosition;
+
+        if (wasMoving && !isMoving)
+        {
+            tutorialObject.gameObject.SetActive(visuals.gameObject.activeInHierarchy);
+            tutorialObject.position = transform.position;
+        }
+
+        if (!wasMoving && isMoving)
+            tutorialObject.gameObject.SetActive(false);
     }
 
     public void SetPosition(float position)
@@ -109,11 +124,13 @@ public class PlayerCharacter : MonoBehaviour
         {
             hitLeftBorder.Invoke();
             visuals.gameObject.SetActive(false);
+            tutorialObject.gameObject.SetActive(false);
         }
         else if (CurrentPosition == 1)
         {
             hitRightBorder.Invoke();
             visuals.gameObject.SetActive(false);
+            tutorialObject.gameObject.SetActive(false);
         }
         else if (!visuals.gameObject.activeSelf)
         {
