@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GGJ.Procedural;
+using UnityEngine;
 
 namespace GGJ.Gameplay
 {
@@ -25,33 +26,43 @@ namespace GGJ.Gameplay
         [SerializeField]
         private LightBeamConfiguration lightBeamConfiguration;
 
-        public Mesh CreateBeam(float startWidth, float endWidth, float length, float distance)
+        struct TrapezoidEdge
         {
-            Mesh mesh = new Mesh
-            {
-                name = "Light Beam",
-                vertices = new Vector3[]
-                {
-                    new Vector3(startWidth / 2, 0, distance),        // BL
-                    new Vector3(-startWidth / 2, 0, distance),       // BR
-                    new Vector3(endWidth / 2, 0, distance + length), // TL
-                    new Vector3(-endWidth / 2, 0, distance + length) // TR
-                },
-                uv = new Vector2[]
-                {
-                    new Vector2(0, 0), // BL
-                    new Vector2(1, 0), // BR
-                    new Vector2(0, 1), // TL
-                    new Vector2(1, 1)  // TR
-                },
-                triangles = new int[]
-                {
-                    0, 1, 2, // Triangle A
-                    1, 3, 2  // Triangle B
-                }
-            };
+            public float StartX;
+            public float EdgeLength;
 
-            return mesh;
+            public TrapezoidEdge(float width, int vertexCount)
+            {
+                EdgeLength = width / vertexCount;
+                StartX = -width / 2;
+            }
+        }
+
+        public Mesh CreateBeam(float startWidth, float endWidth, int subdivisions, float length, float distance)
+        {
+            MeshGenerator meshGenerator = new MeshGenerator("Light Beam");
+
+            int verticesX = subdivisions + 2;
+
+            TrapezoidEdge upperEdge = new TrapezoidEdge(endWidth, verticesX);
+            TrapezoidEdge lowerEdge = new TrapezoidEdge(startWidth, verticesX);
+
+            for (int x = 0; x < verticesX; x++)
+            {
+                meshGenerator.AddVertex(new Vector3(lowerEdge.StartX + x * lowerEdge.EdgeLength, 0, distance), Vector3.up, new Vector2(x / (float)(verticesX - 1), 0));
+            }
+
+            for (int x = 0; x < verticesX; x++)
+            {
+                meshGenerator.AddVertex(new Vector3(upperEdge.StartX + x * upperEdge.EdgeLength, 0, distance + length), Vector3.up, new Vector2(x / (float)(verticesX - 1), 1));
+            }
+
+            for (int x = 0; x < verticesX - 1; x++)
+            {
+                meshGenerator.AddQuad(x, x + 1, x + verticesX, x + 1 + verticesX);
+            }
+
+            return meshGenerator.BuildMesh();
         }
 
         public void Start()
@@ -61,7 +72,12 @@ namespace GGJ.Gameplay
             Debug.Assert(meshRenderer != null, "No mesh renderer assigned", this);
 
             if (mesh == null)
-                mesh = CreateBeam(lightBeamConfiguration.StartWidth, lightBeamConfiguration.EndWidth, lightBeamConfiguration.Length, lightBeamConfiguration.Distance);
+                mesh = CreateBeam(
+                    lightBeamConfiguration.StartWidth,
+                    lightBeamConfiguration.EndWidth,
+                    lightBeamConfiguration.Subdivisions,
+                    lightBeamConfiguration.Length,
+                    lightBeamConfiguration.Distance);
             MeshFilter meshFilter = meshRenderer.GetComponent<MeshFilter>();
             meshFilter.sharedMesh = mesh;
             meshRenderer.sharedMaterial = beamMaterial;
