@@ -10,11 +10,13 @@ public class AudioOption : MonoBehaviour
 
     private void Start()
     {
-        slider.value = PlayMusic.Instance.GetStrength();
+        if(PlayMusic.Instance)
+            slider.value = PlayMusic.Instance.GetStrength();
     }
 
     public void SetStrength(float value)
     {
-        PlayMusic.Instance.SetMusicStrength(value);
+        if(PlayMusic.Instance)
+            PlayMusic.Instance.SetMusicStrength(value);
     }
 }
