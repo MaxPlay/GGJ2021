@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,9 @@ namespace GGJ.Gameplay
 
         [SerializeField]
         private ChestSpawnConfiguration chestConfiguration;
+
+        [SerializeField]
+        private TMP_Text scoreText, chestText;
 
         [SerializeField]
         private WindManager windManager;
@@ -87,7 +91,9 @@ namespace GGJ.Gameplay
                 Debug.LogError("No level data assigned");
                 return;
             }
-            if(levelData.ShipCount <= ReachedShips + CrashedShips)
+            if (scoreText && chestText)
+                UpdateTexts();
+            if (levelData.ShipCount <= ReachedShips + CrashedShips)
             {
                 CheckWinningConditions();
                 CheckLosingConditions();
@@ -114,6 +120,12 @@ namespace GGJ.Gameplay
         {
             Debug.Log($"Game Over: {winningState}");
             onGameOver.Invoke(winningState == WinningState.Won);
+        }
+
+        private void UpdateTexts()
+        {
+            scoreText.text = Points.ToString() + "\n/" + levelData.RequiredShipCount;
+            chestText.text = ReachedChests.ToString() + "\n/" + levelData.RequiredChestCount;
         }
 
         private void OnDrawGizmos()
@@ -185,6 +197,8 @@ namespace GGJ.Gameplay
         {
             SpawnChests();
             StartCoroutine(ShipSpawnRoutine());
+            if(scoreText && chestText)
+                UpdateTexts();
         }
 
         [Serializable]
