@@ -1195,7 +1195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2223621479174550862
 Transform:
   m_ObjectHideFlags: 0
@@ -1265,7 +1265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2250329256201063141
 Transform:
   m_ObjectHideFlags: 0
@@ -1358,10 +1358,130 @@ PrefabInstance:
       propertyPath: switchAnimator
       value: 
       objectReference: {fileID: 2128659973484699134}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7941434629708270313}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7941434629708270313}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594273453678, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
       propertyPath: switchAnimator
       value: 
       objectReference: {fileID: 8646739325184746982}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5026791799515003230}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5026791799515003230}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241777594608332573, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: onLightHouseEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6241777595007169160, guid: 03b70532e321db24a8000b14dc613591, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.a
       value: 0.36078432

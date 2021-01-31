@@ -16,6 +16,13 @@ namespace GGJ.Gameplay
         [SerializeField] Animator switchAnimator;
         [SerializeField] UnityEvent onLightTurnedOn = new UnityEvent();
         [SerializeField] UnityEvent onLightTurnedOff = new UnityEvent();
+
+        [SerializeField]
+        UnityEvent onLightHouseEntered;
+
+        [SerializeField]
+        UnityEvent onLightHouseExited;
+
         void Update()
         {
             HandleInputs();
@@ -59,6 +66,12 @@ namespace GGJ.Gameplay
             lightPivot.SetActive(true);
             switchAnimator.SetBool("Active", true);
             onLightTurnedOn.Invoke();
+            onLightHouseEntered.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            onLightHouseExited.Invoke();
         }
     }
 }
