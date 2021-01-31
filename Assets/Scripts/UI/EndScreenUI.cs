@@ -37,6 +37,8 @@ public class EndScreenUI : MonoBehaviour
 
     private void OpenEndScreen(bool isVictory)
     {
+        PlayerCharacter.inputBlocked = true;
+        PauseMenu.pauseEnabled = false;
         titleText.text = isVictory ? victoryText : FailureText;
         uiObject.SetActive(true);
         PlayerCharacter.inputBlocked = true;
