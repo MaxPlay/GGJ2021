@@ -29,6 +29,10 @@ namespace GGJ.Levels
         [SerializeField]
         private int requiredShipCount;
 
+        [SerializeField]
+        private bool usesTutorial;
+
+        public bool UsesTutorial => usesTutorial;
         public string LevelName => levelName;
         public Sprite PreviewSprite => previewSprite;
         public int RequiredChestCount => requiredChestCount;

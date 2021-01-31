@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: First Level
   previewSprite: {fileID: 0}
-  sceneName: Test_Level
+  sceneName: Level01
   shipCount: 10
-  chestCount: 20
+  chestCount: 10
   requiredChestCount: 0
   requiredShipCount: 8
+  usesTutorial: 0
