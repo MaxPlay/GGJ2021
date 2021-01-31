@@ -14,6 +14,7 @@ namespace GGJ.Gameplay
         private AnimationCurve spawnAnimation;
         [SerializeField]
         private AnimationCurve despawnAnimation;
+        public Rect MovementArea;
 
         public void DoSpawnAnimation()
         {
@@ -22,7 +23,7 @@ namespace GGJ.Gameplay
 
         public void DoDespawnAnimation()
         {
-            StartCoroutine(SpawnAnimationRoutine(State.Despawn, despawnAnimation));
+            StartCoroutine(SpawnAnimationRoutine(State.Despawned, despawnAnimation));
         }
 
         private void OnTriggerEnter(Collider other)
@@ -48,7 +49,7 @@ namespace GGJ.Gameplay
             }
             transform.position = endPosition;
             state = newState;
-            if (newState == State.Despawn)
+            if (newState == State.Despawned)
             {
                 gameObject.SetActive(false);
             }
@@ -65,13 +66,21 @@ namespace GGJ.Gameplay
 
             Vector3 direction = transform.right;
             transform.Translate(direction * Time.deltaTime * speed);
+
+            if (transform.position.x < MovementArea.x)
+            {
+                DoDespawnAnimation();
+            }else if(transform.position.x > MovementArea.x + MovementArea.width)
+            {
+                DoDespawnAnimation();
+            }
         }
 
         private enum State
         {
             Spawn,
             Sailing,
-            Despawn
+            Despawned
         }
     }
 
