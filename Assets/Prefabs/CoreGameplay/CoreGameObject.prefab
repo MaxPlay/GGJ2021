@@ -1698,6 +1698,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4966070830448993056, guid: 4b55fe1f3f6613944a2dc25a227ac95e, type: 3}
     - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: tutorialObject
+      value: 
+      objectReference: {fileID: 765157675498225475}
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
       propertyPath: hostileConfiguration.WhalePrefab
       value: 
       objectReference: {fileID: 7973780843399773874, guid: 7724673fbebf9fd429a5bd240bb46247, type: 3}
