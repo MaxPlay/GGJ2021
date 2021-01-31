@@ -51,8 +51,7 @@ namespace GGJ.Gameplay
 
         public void ShipCrashed(Ship ship)
         {
-            CrashedShips += ship.CollectedChests + 1;
-            CrashedShips += ship.CollectedChests;
+            CrashedShips++;
 
             CheckEndgameCondition();
         }
@@ -88,7 +87,7 @@ namespace GGJ.Gameplay
                 Debug.LogError("No level data assigned");
                 return;
             }
-            if(levelData.ShipCount == ReachedShips + CrashedShips)
+            if(levelData.ShipCount <= ReachedShips + CrashedShips)
             {
                 CheckWinningConditions();
                 CheckLosingConditions();
