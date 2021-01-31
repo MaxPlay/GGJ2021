@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotationSpeed: 1.2
-  chestSpeedReduction: 0
+  chestSpeedReduction: 0.25
   spawnAnimation:
     serializedVersion: 2
     m_Curve:
