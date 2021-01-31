@@ -1657,10 +1657,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5363821766482903079}
     m_Modifications:
-    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
-      propertyPath: tutorialObject
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudAmount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudLayerSize.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudLayerSize.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudLayerSize.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudSpawnVector.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudSpawnVector.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudSpawnVector.z
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 765157675498225475}
+      objectReference: {fileID: 4657952748121019544, guid: be31339e213e1d140bef3599863dd1ec, type: 3}
+    - target: {fileID: 497552472, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: cloudPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4966070830448993056, guid: 4b55fe1f3f6613944a2dc25a227ac95e, type: 3}
+    - target: {fileID: 6241777593222615934, guid: 03b70532e321db24a8000b14dc613591, type: 3}
+      propertyPath: hostileConfiguration.WhalePrefab
+      value: 
+      objectReference: {fileID: 7973780843399773874, guid: 7724673fbebf9fd429a5bd240bb46247, type: 3}
     - target: {fileID: 6241777593620779884, guid: 03b70532e321db24a8000b14dc613591, type: 3}
       propertyPath: tutorialObject
       value: 
