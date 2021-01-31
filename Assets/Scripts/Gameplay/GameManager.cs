@@ -200,10 +200,37 @@ namespace GGJ.Gameplay
             }
         }
 
+        private IEnumerator WhaleSpawnRoutine()
+        {
+            Vector3 spawnPosition = Vector3.zero;
+            for (int i = 0; i < hostileConfiguration.whaleAmount; i++)
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(hostileConfiguration.minWhaleSpawnTime, hostileConfiguration.maxWhaleSpawnTime));
+
+                Rect spawnArea = hostileConfiguration.SpawnArea;
+                int spawnSide = UnityEngine.Random.Range(0, 2);
+                if (spawnSide == 0)
+                {
+                    float y = UnityEngine.Random.Range(spawnArea.y, spawnArea.y + spawnArea.height);
+                    spawnPosition = new Vector3(spawnArea.x, 1f, y);
+                }
+                else
+                {
+                    float y = UnityEngine.Random.Range(spawnArea.y, spawnArea.y + spawnArea.height);
+                    spawnPosition = new Vector3(spawnArea.x + spawnArea.width, 1f, y);
+                }
+
+
+                Whale whale = Instantiate(hostileConfiguration.WhalePrefab, spawnPosition, Quaternion.identity);
+                whale.MovementArea = hostileConfiguration.SpawnArea;
+            }
+        }
+
         private void Start()
         {
             SpawnChests();
             StartCoroutine(ShipSpawnRoutine());
+            StartCoroutine(WhaleSpawnRoutine());
             if (scoreText && chestText)
                 UpdateTexts();
         }
@@ -237,6 +264,10 @@ namespace GGJ.Gameplay
             //public PirateShip PirateShipPrefab;
             public Whale WhalePrefab;
             public Rect SpawnArea;
+            [Range(0, 6)]
+            public int whaleAmount;
+            public float minWhaleSpawnTime;
+            public float maxWhaleSpawnTime;
         }
     }
 }
