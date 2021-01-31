@@ -5,12 +5,14 @@ namespace GGJ.Gameplay
     [CreateAssetMenu(menuName = "GGJ/Light Beam Configuration")]
     public class LightBeamConfiguration : ScriptableObject
     {
-        public int StartWidth;
+        public float StartWidth;
 
-        public int EndWidth;
+        public float EndWidth;
 
-        public int Distance;
+        public int Subdivisions;
 
-        public int Length;
+        public float Distance;
+
+        public float Length;
     }
 }
