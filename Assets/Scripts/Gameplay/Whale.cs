@@ -18,12 +18,14 @@ namespace GGJ.Gameplay
 
         public void DoSpawnAnimation()
         {
+            state = State.Spawn;
             StartCoroutine(SpawnAnimationRoutine(State.Sailing, spawnAnimation));
         }
 
         public void DoDespawnAnimation()
         {
-            StartCoroutine(SpawnAnimationRoutine(State.Despawned, despawnAnimation));
+            state = State.Despawn;
+            StartCoroutine(SpawnAnimationRoutine(State.Despawn, despawnAnimation));
         }
 
         private void OnTriggerEnter(Collider other)
@@ -49,9 +51,12 @@ namespace GGJ.Gameplay
             }
             transform.position = endPosition;
             state = newState;
-            if (newState == State.Despawned)
+            if (newState == State.Despawn)
             {
-                gameObject.SetActive(false);
+                transform.Rotate(Vector3.up, 180f, Space.Self);
+                DoSpawnAnimation();
+                yield return new WaitForSeconds(1f);
+                //gameObject.SetActive(false);
             }
         }
 
@@ -70,7 +75,8 @@ namespace GGJ.Gameplay
             if (transform.position.x < MovementArea.x)
             {
                 DoDespawnAnimation();
-            }else if(transform.position.x > MovementArea.x + MovementArea.width)
+            }
+            else if (transform.position.x > MovementArea.x + MovementArea.width)
             {
                 DoDespawnAnimation();
             }
@@ -80,7 +86,7 @@ namespace GGJ.Gameplay
         {
             Spawn,
             Sailing,
-            Despawned
+            Despawn
         }
     }
 
