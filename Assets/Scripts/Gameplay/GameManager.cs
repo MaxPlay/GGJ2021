@@ -18,6 +18,8 @@ namespace GGJ.Gameplay
 
         [SerializeField]
         private ChestSpawnConfiguration chestConfiguration;
+        [SerializeField]
+        private HostileSpawnConfiguration hostileConfiguration;
 
         [SerializeField]
         private TMP_Text scoreText, chestText;
@@ -86,7 +88,7 @@ namespace GGJ.Gameplay
 
         private void CheckEndgameCondition()
         {
-            if(!levelData)
+            if (!levelData)
             {
                 Debug.LogError("No level data assigned");
                 return;
@@ -136,6 +138,11 @@ namespace GGJ.Gameplay
             Gizmos.color = Color.green;
             Vector2 center = chestConfiguration.SpawnArea.center;
             Vector2 size = chestConfiguration.SpawnArea.size;
+            Gizmos.DrawWireCube(new Vector3(center.x, 0, center.y), new Vector3(size.x, 0, size.y));
+
+            Gizmos.color = Color.magenta;
+            center = hostileConfiguration.SpawnArea.center;
+            size = hostileConfiguration.SpawnArea.size;
             Gizmos.DrawWireCube(new Vector3(center.x, 0, center.y), new Vector3(size.x, 0, size.y));
         }
 
@@ -197,7 +204,7 @@ namespace GGJ.Gameplay
         {
             SpawnChests();
             StartCoroutine(ShipSpawnRoutine());
-            if(scoreText && chestText)
+            if (scoreText && chestText)
                 UpdateTexts();
         }
 
@@ -222,6 +229,14 @@ namespace GGJ.Gameplay
             public Vector3 GetSpawnLocation() => Vector3.Lerp(StartSpawnLine, EndSpawnLine, UnityEngine.Random.value);
 
             public float GetSpawnTime() => UnityEngine.Random.Range(MinSpawnTime, MaxSpawnTime);
+        }
+
+        [Serializable]
+        private class HostileSpawnConfiguration
+        {
+            //public PirateShip PirateShipPrefab;
+            public Whale WhalePrefab;
+            public Rect SpawnArea;
         }
     }
 }
