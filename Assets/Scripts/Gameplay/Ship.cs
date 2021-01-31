@@ -26,6 +26,9 @@ namespace GGJ.Gameplay
         private float chestSpeedReduction;
 
         [SerializeField]
+        Animator animator;
+
+        [SerializeField]
         private AnimationCurve spawnAnimation;
 
         private UnityEvent<Ship> onCrash = new UnityEvent<Ship>();
@@ -46,7 +49,8 @@ namespace GGJ.Gameplay
             else if (other.CompareTag("Obstacle") || other.CompareTag("Ship"))
             {
                 onCrash.Invoke(this);
-                Destroy(gameObject);
+                if(aniamtor)
+                    animator.SetTrigger("Crash");
             }
             else if (other.CompareTag("Lightbeam"))
             {
@@ -55,6 +59,11 @@ namespace GGJ.Gameplay
                     InfuencingLightBeams.Add(other.transform.parent);
                 }
             }
+        }
+
+        public void FinishCrash()
+        {
+            Destroy(gameObject);
         }
 
         private void OnTriggerExit(Collider other)
