@@ -63,6 +63,7 @@ MonoBehaviour:
   speed: 1
   rotationSpeed: 1.2
   chestSpeedReduction: 0.25
+  animator: {fileID: 7739898454230343757}
   spawnAnimation:
     serializedVersion: 2
     m_Curve:

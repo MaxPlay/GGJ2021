@@ -49,8 +49,9 @@ namespace GGJ.Gameplay
             else if (other.CompareTag("Obstacle") || other.CompareTag("Ship"))
             {
                 onCrash.Invoke(this);
-                if(aniamtor)
-                    animator.SetTrigger("Crash");
+                speed = 0;
+                if(animator)
+                    animator.SetTrigger("Sink");
             }
             else if (other.CompareTag("Lightbeam"))
             {
