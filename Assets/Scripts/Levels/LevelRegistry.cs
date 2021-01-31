@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GGJ.Levels
 {
@@ -7,6 +9,14 @@ namespace GGJ.Levels
     {
         [SerializeField]
         private LevelData[] levels;
+        private int currentLevel = -1;
+
+        const string mainMenuSceneName = "MainMenu";
+
+        public void RestartLevel()
+        {
+            levels[currentLevel].StartLevel();
+        }
 
         public void StartFirstLevel()
         {
@@ -23,11 +33,21 @@ namespace GGJ.Levels
 
             if (levels.Length <= index)
             {
-                Debug.LogWarning("Tried to request a level index that is out of range.");
-                return;
+                Debug.LogWarning("Tried to request a level index that is out of range. Propably End of Game.");
+                currentLevel = -1;
+                SceneManager.LoadScene(mainMenuSceneName);
             }
-
+            if(index < 0)
+            {
+                Debug.LogError("Tried to request a level index that is less that 0");
+            }
+            currentLevel = index;
             levels[index].StartLevel();
+        }
+
+        internal void StartNextlevel()
+        {
+            StartLevel(currentLevel + 1);
         }
     }
 }
