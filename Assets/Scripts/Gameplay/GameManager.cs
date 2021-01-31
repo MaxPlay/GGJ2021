@@ -75,6 +75,11 @@ namespace GGJ.Gameplay
                 GameOver(WinningState.Won);
         }
 
+        private void CheckLosingConditions()
+        {
+
+        }
+
         private void GameOver(WinningState winningState)
         {
             Debug.Log($"Game Over: {winningState}");

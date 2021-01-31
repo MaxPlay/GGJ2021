@@ -32,6 +32,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private float prevPosition;
     private bool isMoving;
+    public static bool inputBlocked = false;
 
     public float CurrentPosition
     {
@@ -53,16 +54,20 @@ public class PlayerCharacter : MonoBehaviour
     {
         currentPosition = 0.5f;
         prevPosition = CurrentPosition;
+        inputBlocked = false;
         transform.position = GetCurrentPosition();
     }
 
     private void Update()
     {
         //TODO: Replace this with actual Input-System
-        if (Input.GetKey(KeyCode.D))
-            MoveRight();
-        if (Input.GetKey(KeyCode.A))
-            MoveLeft();
+        if(!inputBlocked)
+        {
+            if (Input.GetKey(KeyCode.D))
+                MoveRight();
+            if (Input.GetKey(KeyCode.A))
+                MoveLeft();
+        }
         UpdateMoveChecker();
     }
 
