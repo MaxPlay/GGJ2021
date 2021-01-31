@@ -64,8 +64,8 @@ namespace GGJ.Gameplay
         {
             if (state != State.Sailing) { return; }
 
-            Vector3 direction = transform.right;
-            transform.Translate(direction * Time.deltaTime * speed);
+            Vector3 direction = Vector3.right;
+            transform.Translate(direction * Time.deltaTime * speed, Space.Self);
 
             if (transform.position.x < MovementArea.x)
             {

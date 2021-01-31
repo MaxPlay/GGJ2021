@@ -207,21 +207,24 @@ namespace GGJ.Gameplay
             {
                 yield return new WaitForSeconds(UnityEngine.Random.Range(hostileConfiguration.minWhaleSpawnTime, hostileConfiguration.maxWhaleSpawnTime));
 
+                Quaternion startRotation = Quaternion.identity;
+
                 Rect spawnArea = hostileConfiguration.SpawnArea;
                 int spawnSide = UnityEngine.Random.Range(0, 2);
                 if (spawnSide == 0)
                 {
                     float y = UnityEngine.Random.Range(spawnArea.y, spawnArea.y + spawnArea.height);
-                    spawnPosition = new Vector3(spawnArea.x, 1f, y);
+                    spawnPosition = new Vector3(spawnArea.x, 0.3f, y);
                 }
                 else
                 {
                     float y = UnityEngine.Random.Range(spawnArea.y, spawnArea.y + spawnArea.height);
-                    spawnPosition = new Vector3(spawnArea.x + spawnArea.width, 1f, y);
+                    spawnPosition = new Vector3(spawnArea.x + spawnArea.width - 1f, 0.3f, y);
+                    startRotation = new Quaternion(0f, 1f, 0f, 0f);
                 }
 
 
-                Whale whale = Instantiate(hostileConfiguration.WhalePrefab, spawnPosition, Quaternion.identity);
+                Whale whale = Instantiate(hostileConfiguration.WhalePrefab, spawnPosition, startRotation);
                 whale.MovementArea = hostileConfiguration.SpawnArea;
             }
         }
