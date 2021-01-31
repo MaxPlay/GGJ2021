@@ -39,8 +39,8 @@ namespace GGJ.Gameplay
         public int SpawnedShips { get; private set; }
 
         [SerializeField]
-        private UnityEvent<bool> onGameOver = new UnityEvent<bool>();
-        public UnityEvent<bool> OnGameOver { get => onGameOver; }
+        private UnityEvent<bool, int, int, LevelData> onGameOver = new UnityEvent<bool, int, int, LevelData>();
+        public UnityEvent<bool, int, int, LevelData> OnGameOver { get => onGameOver; }
 
         public WindManager WindManager => windManager;
 
@@ -119,7 +119,7 @@ namespace GGJ.Gameplay
         private void GameOver(WinningState winningState)
         {
             Debug.Log($"Game Over: {winningState}");
-            onGameOver.Invoke(winningState == WinningState.Won);
+            onGameOver.Invoke(winningState == WinningState.Won, Points, ReachedChests, levelData);
         }
 
         private void UpdateTexts()

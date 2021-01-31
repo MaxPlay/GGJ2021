@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class EndScreenUI : MonoBehaviour
 {
     [SerializeField]
-    TMP_Text titleText;
+    TMP_Text titleText, scoreText, chestText;
 
     [SerializeField]
     GameObject uiObject;
@@ -35,11 +35,13 @@ public class EndScreenUI : MonoBehaviour
         gameManager.OnGameOver.AddListener(OpenEndScreen);
     }
 
-    private void OpenEndScreen(bool isVictory)
+    private void OpenEndScreen(bool isVictory, int score, int chests, LevelData levelData)
     {
         PlayerCharacter.inputBlocked = true;
         PauseMenu.pauseEnabled = false;
         titleText.text = isVictory ? victoryText : FailureText;
+        scoreText.text = score.ToString() + "\n/" + levelData.RequiredShipCount;
+        chestText.text = chests.ToString() + "\n/" + levelData.RequiredChestCount;
         uiObject.SetActive(true);
         PlayerCharacter.inputBlocked = true;
     }
