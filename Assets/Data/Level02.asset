@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 792af9132c371d840806e616ce0715b4, type: 3}
-  m_Name: Level01
+  m_Name: Level02
   m_EditorClassIdentifier: 
   levelName: First Level
   previewSprite: {fileID: 0}
-  sceneName: Level01
-  shipCount: 5
-  chestCount: 1
-  requiredChestCount: 0
-  requiredShipCount: 2
-  usesTutorial: 1
+  sceneName: Level02
+  shipCount: 10
+  chestCount: 8
+  requiredChestCount: 3
+  requiredShipCount: 4
+  usesTutorial: 0

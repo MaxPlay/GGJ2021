@@ -49,6 +49,7 @@ namespace GGJ.Gameplay
             else if (other.CompareTag("Obstacle") || other.CompareTag("Ship"))
             {
                 onCrash.Invoke(this);
+                GetComponent<SphereCollider>().enabled = false;
                 speed = 0;
                 if(animator)
                     animator.SetTrigger("Sink");
