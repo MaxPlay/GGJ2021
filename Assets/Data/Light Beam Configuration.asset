@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartWidth: 1
   EndWidth: 4
+  Subdivisions: 10
   Distance: 1
   Length: 20
